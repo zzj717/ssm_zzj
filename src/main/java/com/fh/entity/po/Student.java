@@ -3,6 +3,7 @@ package com.fh.entity.po;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fh.conmon.annotaction.Excel;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -11,8 +12,11 @@ import java.util.Date;
 public class Student {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    @Excel(name="学生姓名",value = "name")
     private String name;
+    @Excel(name="学生年龄",value = "age")
     private Integer age;
+    @Excel(name="学生生日",value = "birthday")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String address;

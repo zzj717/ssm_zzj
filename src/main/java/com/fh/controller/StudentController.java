@@ -7,6 +7,8 @@ import com.fh.entity.vo.StudentSearch;
 import com.fh.service.StudentService;
 import com.fh.utils.JsonUtil;
 import com.fh.utils.OssloadUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,7 @@ import java.util.List;
 @RequestMapping("student/")
 @CrossOrigin
 public class StudentController {
+    private final static Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
      @Autowired
       private StudentService studentservice;
       @Resource
@@ -30,14 +33,20 @@ public class StudentController {
       @Resource
       private HttpServletResponse response;
 
-      //  分页数据查询    张子疆
+
+
+
+    //  分页数据查询    张子疆
       @PostMapping("querylistStudent")
       public void querylistStudent(StudentSearch search){
+
           try {
               String omg=studentservice.querylistStudent(search);
               JsonUtil.jsonArray(response,omg);
+
           }catch (Exception e){
               e.printStackTrace();
+              LOGGER.info("查询异常");
           }
       }
       // 增加学生管路系统
@@ -48,6 +57,7 @@ public class StudentController {
                return ResponseData.success(null);
            }catch (Exception e){
                e.printStackTrace();
+               LOGGER.info("增加异常");
                return ResponseData.error(e.getMessage());
            }
        }
@@ -59,6 +69,7 @@ public class StudentController {
               return ResponseData.success(dent);
           }catch (Exception e){
               e.printStackTrace();
+              LOGGER.info("回显异常");
               return ResponseData.error(e.getMessage());
           }
       }
@@ -70,6 +81,7 @@ public class StudentController {
               return ResponseData.success(null);
           }catch (Exception e){
               e.printStackTrace();
+              LOGGER.info("修改异常");
               return ResponseData.error(e.getMessage());
           }
       }
@@ -81,6 +93,7 @@ public class StudentController {
                return ResponseData.success(null);
            }catch (Exception e){
                e.printStackTrace();
+               LOGGER.info("删除异常");
                return ResponseData.error(e.getMessage());
            }
        }
@@ -92,6 +105,7 @@ public class StudentController {
              return ResponseData.success(list);
          }catch (Exception e){
              e.printStackTrace();
+             LOGGER.info("地区异常");
              return ResponseData.error(e.getMessage());
          }
      }
@@ -105,9 +119,15 @@ public class StudentController {
              return ResponseData.success(s);
          }catch (Exception e){
              e.printStackTrace();
+             LOGGER.info("图片异常");
              return ResponseData.error(e.getMessage());
          }
      }
+
+
+
+
+
 
 
 }

@@ -18,4 +18,6 @@ public interface StudentService {
     void updatestudent(Student student);
 
     void deletestudent(Student student);
+
+    List<Student> getquerylist();
 }

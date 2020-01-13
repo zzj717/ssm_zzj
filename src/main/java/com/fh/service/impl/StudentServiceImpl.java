@@ -85,4 +85,9 @@ public class StudentServiceImpl implements StudentService {
         student.setIsdel(0);
         studentdao.updateById(student);
     }
+
+    @Override
+    public List<Student> getquerylist() {
+        return studentdao.selectList(null);
+    }
 }
