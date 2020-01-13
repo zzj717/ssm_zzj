@@ -30,7 +30,7 @@ public class StudentController {
       @Resource
       private HttpServletResponse response;
 
-      //  分页数据查询
+      //  分页数据查询    张子疆
       @PostMapping("querylistStudent")
       public void querylistStudent(StudentSearch search){
           try {
